@@ -38,4 +38,20 @@ public class Product {
         this.quantity = quantity;
     }
 
+    public String getProductID(){
+        return productID;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public double getPrice(){
+        return price;
+    }
+
+    public int getQuantity(){
+        return quantity;
+    }
+
 }
