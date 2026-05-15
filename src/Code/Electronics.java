@@ -1,6 +1,8 @@
 package Code;
 
 public class Electronics extends Product{
-    double warrantyYears;
-    String brand;
+    private double warrantyYears;
+    private String brand;
+
+
 }
