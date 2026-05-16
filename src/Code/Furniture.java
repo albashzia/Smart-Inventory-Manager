@@ -1,6 +1,8 @@
 package Code;
 
-public class Furniture extends Product{
+import java.io.Serializable;
+
+public class Furniture extends Product implements Serializable {
     private String material;
     private String dimensions;
 

@@ -1,6 +1,8 @@
 package Code;
 
-public class Grocery extends Product{
+import java.io.Serializable;
+
+public class Grocery extends Product implements Serializable {
     private String expiryDate;
     private double weight;
 

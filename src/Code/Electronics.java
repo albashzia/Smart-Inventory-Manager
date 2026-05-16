@@ -1,6 +1,8 @@
 package Code;
 
-public class Electronics extends Product{
+import java.io.Serializable;
+
+public class Electronics extends Product implements Serializable {
     private double warrantyYears;
     private String brand;
 
