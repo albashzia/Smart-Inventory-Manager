@@ -21,4 +21,9 @@ public class Inventory <T extends Product>{
         }
         return null;
     }
+
+    public void updateStock(T product, int newStock){
+        product.setQuantity(newStock);
+    }
+
 }
