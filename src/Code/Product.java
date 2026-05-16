@@ -1,6 +1,6 @@
 package Code;
 
-public class Product {
+abstract public class Product {
 
     private String productID;
     private String name;
