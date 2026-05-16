@@ -15,4 +15,20 @@ public class Furniture extends Product{
         this.material = material;
         this.dimensions = dimensions;
     }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public String getDimensions() {
+        return dimensions;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
+    }
+
+    public void setDimensions(String dimensions) {
+        this.dimensions = dimensions;
+    }
 }
