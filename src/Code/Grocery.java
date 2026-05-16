@@ -17,4 +17,18 @@ public class Grocery extends Product{
         this.weight = weight;
     }
 
+    public double getWeight() {
+        return weight;
+    }
+    public String getExpiryDate() {
+        return expiryDate;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public void setExpiryDate(String expiryDate) {
+        this.expiryDate = expiryDate;
+    }
 }
