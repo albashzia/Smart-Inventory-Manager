@@ -1,4 +1,8 @@
 package Code;
 
-public class Grocery {
+public class Grocery extends Product{
+    private String expiryDate;
+    private double weight;
+
+
 }
