@@ -16,4 +16,18 @@ public class Electronics extends Product{
         this.brand = brand;
     }
 
+    public double getWarrantyYears() {
+        return warrantyYears;
+    }
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setWarrantyYears(double warrantyYears) {
+        this.warrantyYears = warrantyYears;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
 }
