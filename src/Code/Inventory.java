@@ -12,4 +12,13 @@ public class Inventory <T extends Product>{
     public void deleteProduct(T product){
         list.remove(product);
     }
+
+    public T searchProduct(String id){
+        for (int i = 0; i < list.size(); i++){
+            if (list.get(i).getProductID().equalsIgnoreCase(id)){
+                return list.get(i);
+            }
+        }
+        return null;
+    }
 }
