@@ -8,5 +8,6 @@ public class CreateFrame extends JFrame {
         this.setSize(600,400);
         this.setLocationRelativeTo(null);
         this.setTitle("Smart Inventory Manager");
+        this.setLayout(null);
     }
 }
