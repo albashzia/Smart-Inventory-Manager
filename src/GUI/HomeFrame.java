@@ -10,11 +10,11 @@ public class HomeFrame {
 
     public HomeFrame(){
 
-        addProductFrame = new CreateButton("Add Product",100,150);
-        removeProductFrame = new CreateButton("Remove Product",200,150);
-        searchProductFrame = new CreateButton("Search",300,150);
-        updateStockFrame = new CreateButton("Update Stock",400,150);
-        exitButton = new CreateButton("Exit",300,300);
+        addProductFrame = new CreateButton("Add Product",100,100);
+        removeProductFrame = new CreateButton("Remove Product",320,100);
+        searchProductFrame = new CreateButton("Search",100,180);
+        updateStockFrame = new CreateButton("Update Stock",320,180);
+        exitButton = new CreateButton("Exit",210,260);
 
 
 
