@@ -1,6 +1,9 @@
 package GUI;
 
-public class HomeFrame {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class HomeFrame implements ActionListener {
     CreateFrame frame = new CreateFrame();
     CreateButton addProductFrame;
     CreateButton removeProductFrame;
@@ -25,5 +28,10 @@ public class HomeFrame {
         frame.add(exitButton);
 
         frame.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
 }
