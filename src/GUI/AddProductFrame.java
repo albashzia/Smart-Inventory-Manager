@@ -6,8 +6,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddProductFrame implements ActionListener
-{
+ public class AddProductFrame implements ActionListener {
     CreateFrame frame = new CreateFrame();
     JComboBox<String> typeBox;
 
@@ -22,17 +21,18 @@ public class AddProductFrame implements ActionListener
     JLabel extra2Label;
 
     CreateButton saveBtn;
+    CreateButton backBtn;
 
-    public AddProductFrame()
-    {
+    public AddProductFrame() {
         frame.setTitle("Add New Product");
+
         // Heading
         JLabel heading = new JLabel("Enter Product Details", SwingConstants.CENTER);
-        heading.setBounds(170,20,250,30);
+        heading.setBounds(170, 20, 250, 30);
 
         // Product Type
         JLabel typeLabel = new JLabel("Product Type:");
-        typeLabel.setBounds(50,70,120,25);
+        typeLabel.setBounds(50, 70, 120, 25);
 
         String[] types = {
                 "Electronics",
@@ -41,55 +41,57 @@ public class AddProductFrame implements ActionListener
         };
 
         typeBox = new JComboBox<>(types);
-        typeBox.setBounds(180,70,150,25);
+        typeBox.setBounds(180, 70, 150, 25);
         typeBox.addActionListener(this);
 
         // Product ID
         JLabel idLabel = new JLabel("Product ID:");
-        idLabel.setBounds(50,110,120,25);
+        idLabel.setBounds(50, 110, 120, 25);
 
         idField = new JTextField();
-        idField.setBounds(180,110,150,25);
+        idField.setBounds(180, 110, 150, 25);
 
         // Name
         JLabel nameLabel = new JLabel("Name:");
-        nameLabel.setBounds(50,150,120,25);
+        nameLabel.setBounds(50, 150, 120, 25);
 
         nameField = new JTextField();
-        nameField.setBounds(180,150,150,25);
+        nameField.setBounds(180, 150, 150, 25);
 
         // Price
         JLabel priceLabel = new JLabel("Price:");
-        priceLabel.setBounds(50,190,120,25);
+        priceLabel.setBounds(50, 190, 120, 25);
 
         priceField = new JTextField();
-        priceField.setBounds(180,190,150,25);
+        priceField.setBounds(180, 190, 150, 25);
 
         // Quantity
         JLabel quantityLabel = new JLabel("Quantity:");
-        quantityLabel.setBounds(50,230,120,25);
+        quantityLabel.setBounds(50, 230, 120, 25);
 
         quantityField = new JTextField();
-        quantityField.setBounds(180,230,150,25);
+        quantityField.setBounds(180, 230, 150, 25);
 
         // Extra 1
         extra1Label = new JLabel("Warranty:");
-        extra1Label.setBounds(350,110,120,25);
+        extra1Label.setBounds(350, 110, 120, 25);
 
         extra1Field = new JTextField();
-        extra1Field.setBounds(430,110,120,25);
+        extra1Field.setBounds(430, 110, 120, 25);
 
         // Extra 2
         extra2Label = new JLabel("Brand:");
-        extra2Label.setBounds(350,150,120,25);
+        extra2Label.setBounds(350, 150, 120, 25);
 
         extra2Field = new JTextField();
-        extra2Field.setBounds(430,150,120,25);
+        extra2Field.setBounds(430, 150, 120, 25);
 
-        // Save Button
-        saveBtn = new CreateButton("Save Product", 210, 300);
-
+        // Action Buttons
+        saveBtn = new CreateButton("Save Product", 100, 300);
         saveBtn.addActionListener(this);
+
+        backBtn = new CreateButton("Back", 320, 300);
+        backBtn.addActionListener(this);
 
         // Add Components
         frame.add(heading);
@@ -116,53 +118,53 @@ public class AddProductFrame implements ActionListener
         frame.add(extra2Field);
 
         frame.add(saveBtn);
+        frame.add(backBtn);
 
         frame.setVisible(true);
     }
 
+    private void clearFields() {
+        idField.setText("");
+        nameField.setText("");
+        priceField.setText("");
+        quantityField.setText("");
+        extra1Field.setText("");
+        extra2Field.setText("");
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Type Selection
+        // Type Selection Handling
         if (e.getSource() == typeBox) {
             String selected = (String) typeBox.getSelectedItem();
 
-            if (selected.equals("Electronics"))
-            {
+            if (selected.equals("Electronics")) {
                 extra1Label.setText("Warranty:");
                 extra2Label.setText("Brand:");
-            }
-
-            else if (selected.equals("Furniture"))
-            {
+            } else if (selected.equals("Furniture")) {
                 extra1Label.setText("Material:");
                 extra2Label.setText("Dimensions:");
-            }
-
-            else
-            {
+            } else {
                 extra1Label.setText("Expiry:");
                 extra2Label.setText("Weight:");
             }
         }
 
-        // Save Button
-        else if (e.getSource() == saveBtn)
-        {
-            try
-            {
+        // Save Button Handling
+        else if (e.getSource() == saveBtn) {
+            try {
                 String type = (String) typeBox.getSelectedItem();
+                String id = idField.getText().trim();
+                String name = nameField.getText().trim();
+                double price = Double.parseDouble(priceField.getText().trim());
+                int quantity = Integer.parseInt(quantityField.getText().trim());
+                String extra1 = extra1Field.getText().trim();
+                String extra2 = extra2Field.getText().trim();
 
-                String id = idField.getText();
-
-                String name = nameField.getText();
-
-                double price = Double.parseDouble(priceField.getText());
-
-                int quantity = Integer.parseInt(quantityField.getText());
-
-                String extra1 = extra1Field.getText();
-
-                String extra2 = extra2Field.getText();
+                if (id.isEmpty() || name.isEmpty() || extra1.isEmpty() || extra2.isEmpty()) {
+                    JOptionPane.showMessageDialog(frame, "Please fill out all fields!", "Input Error", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
 
                 Product product;
 
@@ -175,9 +177,7 @@ public class AddProductFrame implements ActionListener
                             Double.parseDouble(extra1),
                             extra2
                     );
-                }
-
-                else if (type.equals("Furniture")) {
+                } else if (type.equals("Furniture")) {
                     product = new Furniture(
                             id,
                             name,
@@ -186,9 +186,7 @@ public class AddProductFrame implements ActionListener
                             extra1,
                             extra2
                     );
-                }
-
-                else {
+                } else {
                     product = new Grocery(
                             id,
                             name,
@@ -199,24 +197,22 @@ public class AddProductFrame implements ActionListener
                     );
                 }
 
-                JOptionPane.showMessageDialog(
-                        frame,
-                        "Product Created Successfully"
-                );
+                // Core Logic Additions: Add to collection and write storage state immediately
+                InventoryManager.inventory.addProduct(product);
+                FileHandler.saveInventory(InventoryManager.inventory);
 
-                System.out.println(
-                        product.getName()
-                );
+                JOptionPane.showMessageDialog(frame, "Product Created Successfully");
+                clearFields();
 
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(frame, "Invalid Input! Please check numeric formatting.", "Error", JOptionPane.ERROR_MESSAGE);
             }
+        }
 
-            catch (Exception ex) {
-
-                JOptionPane.showMessageDialog(
-                        frame,
-                        "Invalid Input!"
-                );
-            }
+        // Back Button Handling
+        else if (e.getSource() == backBtn) {
+            frame.dispose();
+            new HomeFrame();
         }
     }
 }
