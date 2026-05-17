@@ -19,6 +19,13 @@ public class Grocery extends Product implements Serializable {
         this.weight = weight;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() +
+                "\nExpiry: " + expiryDate +
+                "\nWeight: " + weight;
+    }
+
     public double getWeight() {
         return weight;
     }

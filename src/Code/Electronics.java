@@ -18,6 +18,13 @@ public class Electronics extends Product implements Serializable {
         this.brand = brand;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() +
+                "\nBrand: " + brand +
+                "\nWarranty: " + warrantyYears + " years";
+    }
+
     public double getWarrantyYears() {
         return warrantyYears;
     }

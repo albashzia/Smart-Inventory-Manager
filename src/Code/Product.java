@@ -23,6 +23,14 @@ abstract public class Product implements Serializable {
         this.quantity = quantity;
     }
 
+    @Override
+    public String toString() {
+        return "ID: " + productID +
+                "\nName: " + name +
+                "\nPrice: " + price +
+                "\nQuantity: " + quantity;
+    }
+
 
     public void setProductID(String productID){
         this.productID = productID;

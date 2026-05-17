@@ -18,6 +18,13 @@ public class Furniture extends Product implements Serializable {
         this.dimensions = dimensions;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() +
+                "\nMaterial: " + material +
+                "\nDimensions: " + dimensions;
+    }
+
     public String getMaterial() {
         return material;
     }
