@@ -3,14 +3,25 @@ package Code;
 import java.util.ArrayList;
 
 public class Inventory <T extends Product>{
-    ArrayList<T> list = new ArrayList<>();
+    private ArrayList<T> list = new ArrayList<>();
+
+    public ArrayList<T> getAllProducts(){
+        return list;
+    }
 
     public void addProduct(T product){
         list.add(product);
     }
 
-    public void deleteProduct(T product){
-        list.remove(product);
+    public boolean deleteProduct(String id){
+        T product = searchProduct(id);
+
+        if(product != null){
+            list.remove(product);
+            return true;
+        }
+
+        return false;
     }
 
     public T searchProduct(String id){
