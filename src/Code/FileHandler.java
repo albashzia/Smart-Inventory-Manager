@@ -1,5 +1,5 @@
 package Code;
-
+import java.util.*;
 import java.io.*;
 
 public class FileHandler {
@@ -17,6 +17,26 @@ public class FileHandler {
         catch(Exception e)
         {
             e.printStackTrace();
+        }
+    }
+
+    public static void loadInventory(){
+        try
+        {
+            ObjectInputStream in =new ObjectInputStream(new FileInputStream(FILE_NAME));
+            InventoryManager.inventory =new Inventory<>();
+            ArrayList<Product> list = (ArrayList<Product>)in.readObject();
+
+            for(Product p : list)
+            {
+                InventoryManager.inventory.addProduct(p);
+            }
+            in.close();
+
+        }
+        catch(Exception e)
+        {
+            System.out.println("No previous inventory found");
         }
     }
 
