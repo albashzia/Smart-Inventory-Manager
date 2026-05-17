@@ -1,6 +1,8 @@
 package Code;
 
-abstract public class Product {
+import java.io.Serializable;
+
+abstract public class Product implements Serializable {
 
     private String productID;
     private String name;
